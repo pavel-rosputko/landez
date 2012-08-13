@@ -233,12 +233,13 @@ class MapnikRenderer(TileSource):
         proj = GoogleProjection(self.tilesize, [z])
         return self.render(proj.tile_bbox((z, x, y)))
 
-    def render(self, bbox, output, width=None, height=None):
+    # NOTE removed output
+    def render(self, bbox, width=None, height=None):
         """
         Render the specified tile with Mapnik
         """
         width = width or self.tilesize
-        width = height or self.tilesize
+        height = height or self.tilesize
         if not self._mapnik:
             if not width:
                 self.tile_size, 
